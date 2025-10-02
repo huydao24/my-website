@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website của tôi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        h1 { font-size: 3em; }
+        p { font-size: 1.5em; }
+    </style>
+</head>
+<body>
+    <h1>🚀 Website đầu tiên của tôi</h1>
+    <p>Deploy thành công lên Vercel!</p>
+    <p>Thời gian: <span id="time"></span></p>
+
+    <script>
+        setInterval(() => {
+            document.getElementById('time').textContent = new Date().toLocaleTimeString('vi-VN');
+        }, 1000);
+    </script>
+</body>
+</html>
