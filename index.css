@@ -1,0 +1,22 @@
+h1 {
+    font-size: 3em;
+    height: 50px;
+    width: 50px;
+}
+
+h1:hover {
+    color: red;
+    transform: rotate(360deg);
+    transition: all 0.5s ease-in-out;
+}
+button {
+      padding: 12px 25px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background: #4CAF50;
+      color: white;
+      position: relative;
+      z-index: 10;
+    }

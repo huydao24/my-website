@@ -17,17 +17,63 @@
              width: 50px;
             }
         p { font-size: 1.5em; }
+        .floating-text {
+      position: absolute;
+      font-size: 20px;
+      font-weight: bold;
+      color: rgb(164, 211, 23);
+      white-space: nowrap;
+      animation: floatUp 5s ease-out forwards;
+      pointer-events: none;
+    }
+
+           @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(-150px) scale(2); /* to dần */
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-350px) scale(3); /* to hơn nữa rồi biến mất */
+      }
+    }
     </style>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <h1>🚀 Tôi là minh tôi thích lọ</h1>
     <p>Quyết không bỏ cuộc</p>
     <p>Thời gian: <span id="time"></span></p>
+    <button id="flyBtn">Nhấp để bắn</button>
 
-    <script>
-        setInterval(() => {
-            document.getElementById('time').textContent = new Date().toLocaleTimeString('vi-VN');
-        }, 1000);
-    </script>
+
+     <script>
+    const btn = document.getElementById("flyBtn");
+    const messages = ["Ớ, phê, quá đã", "Bắn phát nào!", "Lại đây nào!", "Thích thì bắn thôi!", "Bắn đi đừng ngại!", "Phê lòi mắt!", "Bắn phát nữa đi!", "Quá đã luôn!", "Bắn tiếp nào!", "Phê quá trời!"];
+
+     // Cập nhật thời gian hiện tại
+
+    btn.addEventListener("click", () => {
+      const text = document.createElement("span");
+      text.className = "floating-text";
+      text.innerText = messages[Math.floor(Math.random() * messages.length)];
+
+      // đặt vị trí nút
+      const rect = btn.getBoundingClientRect();
+      text.style.left = (rect.left + rect.width / 2) + "px";
+      text.style.top = (rect.top - 10) + "px";
+
+      document.body.appendChild(text);
+
+      // xóa sau 5s
+      setTimeout(() => {
+        text.remove();
+      }, 50000);
+    });
+  </script>
 </body>
 </html>
