@@ -47,18 +47,44 @@
 <body>
     <h1>🚀 Tôi là minh tôi thích lọ</h1>
     <p>Quyết không bỏ cuộc</p>
-    <p>Thời gian: <span id="time"></span></p>
-    <button onclick="updateTime()">Bấm vào đây để cập nhật thời gian</button>
-    <br>
+    <h2>⏱️ Bộ đếm giờ:</h2>
+  <span id="time">00:00:00</span><br>
+  <button onclick="startTimer()">Bắt đầu</button>
+  <button onclick="stopTimer()">Dừng</button>
+  <button onclick="resetTimer()">Đặt lại</button>
 
-    </br>
-    <script>
-    function updateClock() {
-      const now = new Date();
-      const timeString = now.toLocaleTimeString("vi-VN");
-      document.getElementById("time").innerText = timeString;
+  <script>
+    let timer;
+    let seconds = 0;
+    let running = false;
+
+    function startTimer() {
+      if (!running) {
+        running = true;
+        document.getElementById("time").style.display = "block";
+        timer = setInterval(updateClock, 1000);
+      }
     }
-    setInterval(updateClock, 1000); // cập nhật mỗi giây
+
+    function stopTimer() {
+      running = false;
+      clearInterval(timer);
+    }
+
+    function resetTimer() {
+      stopTimer();
+      seconds = 0;
+      document.getElementById("time").innerText = "00:00:00";
+    }
+
+    function updateClock() {
+      seconds++;
+      let hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
+      let mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+      let secs = String(seconds % 60).padStart(2, '0');
+      document.getElementById("time").innerText = `${hrs}:${mins}:${secs}`;
+    }
+  </script>
   </script>
     <button id="flyBtn">Nhấp để bắn</button>
 
