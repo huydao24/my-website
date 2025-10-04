@@ -48,6 +48,18 @@
     <h1>🚀 Tôi là minh tôi thích lọ</h1>
     <p>Quyết không bỏ cuộc</p>
     <p>Thời gian: <span id="time"></span></p>
+    <button onclick="updateTime()">Bấm vào đây để cập nhật thời gian</button>
+    <br>
+
+    </br>
+    <script>
+    function updateClock() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString("vi-VN");
+      document.getElementById("time").innerText = timeString;
+    }
+    setInterval(updateClock, 1000); // cập nhật mỗi giây
+  </script>
     <button id="flyBtn">Nhấp để bắn</button>
 
 
